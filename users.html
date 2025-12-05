@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Manage Users</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="app-page">
+    <!-- Pure HTML/CSS Navigation Bar -->
+    <nav class="site-nav">
+      <ul class="nav-links">
+        <li><a href="groupchat.html" id="groupChatLink">Group Chat</a></li>
+        <li><a href="users.html" class="active">Manage Users</a></li>
+        <li><a href="managedocuments.html" id="documentsLink">Documents</a></li>
+      </ul>
+      <div class="nav-spacer"></div>
+      <a href="#" id="logoutLink" class="logout-link">Logout</a>
+    </nav>
+
+    <main class="app-container flex-grow-1">
+      <div class="panel">
+        <div class="panel-header">
+          <h1 class="panel-title">User Management</h1>
+          <span class="user-count" id="userCountBadge">0</span>
+        </div>
+        <div class="panel-body">
+          <div id="usersList" class="users-table-wrapper">
+            <!-- Filled by script -->
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+      // Populate brand with current user name if available
+      try {
+        const current = JSON.parse(localStorage.getItem("currentUser"));
+        if (current && current.username) {
+          document.getElementById("appBrand").textContent = current.username;
+        }
+      } catch (e) {}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Manage Documents</title>
+	<link rel="stylesheet" href="styles.css" />
+</head>
+<body class="app-page">
+	<nav class="site-nav">
+		<span class="nav-brand" id="appBrand">Names</span>
+		<ul class="nav-links">
+			<li><a href="groupchat.html" id="groupChatLink">Group Chat</a></li>
+			<li><a href="users.html">Manage Users</a></li>
+			<li><a href="managedocuments.html" class="active" id="documentsLink">Documents</a></li>
+		</ul>
+		<div class="nav-spacer"></div>
+		<a href="#" id="logoutLink" class="logout-link">Logout</a>
+	</nav>
+
+	<main class="app-container flex-grow-1">
+		<div class="panel">
+			<div class="panel-header">
+				<h1 class="panel-title">Documents</h1>
+			</div>
+			<div class="panel-body">
+				<form id="uploadForm" class="doc-upload-form">
+					<input type="text" id="docTitle" placeholder="Document title" />
+					<input type="url" id="docUrl" placeholder="Document URL (optional)" />
+					<button type="submit" class="btn1">Upload</button>
+				</form>
+				<div id="uploadStatus" class="text-muted" aria-live="polite"></div>
+
+				<div class="doc-tables">
+					<section>
+						<h2>My Uploads</h2>
+						<div id="myDocs" class="users-table-wrapper"></div>
+					</section>
+                    <br />
+					<section>
+						<h2>All Documents</h2>
+						<div id="allDocs" class="users-table-wrapper"></div>
+					</section>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<script src="script.js"></script>
+	<script>
+		try {
+			const current = JSON.parse(localStorage.getItem('currentUser'));
+			if (current && current.username) {
+				document.getElementById('appBrand').textContent = current.username;
+			}
+		} catch(e) {}
+	</script>
+</body>
+</html>

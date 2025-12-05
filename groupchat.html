@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Group Chat</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="app-page">
+    <!-- Navigation Bar -->
+    <nav class="site-nav">
+      <span class="nav-brand" id="appBrand">Names</span>
+      <ul class="nav-links">
+        <li>
+          <a href="groupchat.html" id="groupChatLink" class="active"
+            >Group Chat</a
+          >
+        </li>
+        <li><a href="users.html">Manage Users</a></li>
+        <li><a href="managedocuments.html" id="documentsLink">Documents</a></li>
+      </ul>
+      <div class="nav-spacer"></div>
+      <a href="#" id="logoutLink" class="logout-link">Logout</a>
+    </nav>
+    <main class="app-container flex-grow-1">
+      <div class="panel">
+        <div class="panel-header">
+          <h1 class="panel-title">Group Chat</h1>
+        </div>
+        <div class="panel-body">
+          <div id="chatContainer" class="chat-container">
+            <div class="chat-header">
+              <strong>Group Feed</strong>
+            </div>
+            <div id="messageList" class="message-list"></div>
+            <form id="chatForm" class="chat-form">
+              <input
+                type="text"
+                id="messageInput"
+                placeholder="Type a message..."
+                autocomplete="off"
+              />
+              <button type="submit" class="btn send-btn">Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="script.js"></script>
+    <script>
+      // Populate brand with current user name if available
+      try {
+        const current = JSON.parse(localStorage.getItem("currentUser"));
+        if (current && current.username) {
+          document.getElementById("appBrand").textContent = current.username;
+        }
+      } catch (e) {}
+    </script>
+  </body>
+</html>
